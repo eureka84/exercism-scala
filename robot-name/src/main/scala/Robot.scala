@@ -11,20 +11,20 @@ class Robot {
 }
 
 object Robot {
-  val A_ASCII_CODE = 65
-  val ALPHABET_SIZE = 26
+  private val A_ASCII_CODE = 65
+  private val ALPHABET_SIZE = 26
 
   private val alreadySet = mutable.HashSet.empty[String]
 
   private def aChar: Char = (A_ASCII_CODE + Random.nextInt(ALPHABET_SIZE)).toChar
   private def aNumber: Int = Random.nextInt(10)
 
-  private def buildRandomName = s"$aChar$aChar$aNumber$aNumber$aNumber"
+  private def aRobotName = s"$aChar$aChar$aNumber$aNumber$aNumber"
 
   private def generateName(): String = {
-    var randomName = buildRandomName
+    var randomName = aRobotName
     while (alreadySet.contains(randomName)){
-      randomName = buildRandomName
+      randomName = aRobotName
     }
     alreadySet.add(randomName)
     randomName
