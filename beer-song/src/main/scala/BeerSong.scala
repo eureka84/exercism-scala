@@ -9,9 +9,9 @@ object BeerSong {
 
   private def firstVerse(n: Int) = s"${n.bottles.capitalize} of beer on the wall, ${n.bottles} of beer.\n"
 
-  private def secondVerse(current: Int, remaining: Int): String = (current, remaining) match {
-    case (0, _) => "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
-    case (1, 0) => "Take it down and pass it around, no more bottles of beer on the wall.\n"
+  private def secondVerse(current: Int, remaining: Int): String = current match {
+    case 0 => "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
+    case 1 => s"Take it down and pass it around, ${remaining.bottles} of beer on the wall.\n"
     case _ => s"Take one down and pass it around, ${remaining.bottles} of beer on the wall.\n"
   }
 
