@@ -1,8 +1,7 @@
 
 object BeerSong {
 
-  def recite(bottles: Int, take: Int): String =
-    (bottles to (bottles - take + 1) by -1).map { bottlesOnTheWall => verse(bottlesOnTheWall) }.mkString("\n")
+  def recite(bottles: Int, take: Int): String = (bottles to (bottles - take + 1) by -1).map(verse).mkString("\n")
 
   private def verse(n: Int) = firstVerse(n) + secondVerse(n)
 
