@@ -10,9 +10,13 @@ object BeerSong {
   private def firstVerse(n: Int) = s"${n.bottles.capitalize} of beer on the wall, ${n.bottles} of beer.\n"
 
   private def secondVerse(current: Int, remaining: Int): String = current match {
-    case 0 => "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
-    case 1 => s"Take it down and pass it around, ${remaining.bottles} of beer on the wall.\n"
-    case _ => s"Take one down and pass it around, ${remaining.bottles} of beer on the wall.\n"
+    case 0 => s"Go to the store and buy some more, ${99.onTheWall}"
+    case 1 => s"Take it down and pass it around, ${remaining.onTheWall}"
+    case _ => s"Take one down and pass it around, ${remaining.onTheWall}"
+  }
+
+  private implicit class OnTheWallInt(n: Int) {
+    def onTheWall: String = s"${n.bottles} of beer on the wall.\n"
   }
 
   private implicit class BottlesInt(n: Int) {
