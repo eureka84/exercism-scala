@@ -7,24 +7,20 @@ object BeerSong {
   private def verse(bottlesOnTheWall: Int) =
     firstVerse(bottlesOnTheWall) + secondVerse(bottlesOnTheWall, bottlesOnTheWall - 1)
 
-  private def firstVerse(n: Int) = s"${n.bottles.capitalize} of beer on the wall, ${n.bottles} of beer.\n"
+  private def firstVerse(n: Int) = s"${bottles(n).capitalize} of beer on the wall, ${bottles(n)} of beer.\n"
 
   private def secondVerse(current: Int, remaining: Int): String = current match {
-    case 0 => s"Go to the store and buy some more, ${99.onTheWall}"
-    case 1 => s"Take it down and pass it around, ${remaining.onTheWall}"
-    case _ => s"Take one down and pass it around, ${remaining.onTheWall}"
+    case 0 => s"Go to the store and buy some more, ${onTheWall(99)}"
+    case 1 => s"Take it down and pass it around, ${onTheWall(remaining)}"
+    case _ => s"Take one down and pass it around, ${onTheWall(remaining)}"
   }
 
-  private implicit class OnTheWallInt(n: Int) {
-    def onTheWall: String = s"${n.bottles} of beer on the wall.\n"
-  }
+  private def onTheWall(n: Int): String = s"${bottles(n)} of beer on the wall.\n"
 
-  private implicit class BottlesInt(n: Int) {
-    def bottles: String = n match {
-      case 1 => "1 bottle"
-      case 0 => "no more bottles"
-      case _ => s"$n bottles"
-    }
+  def bottles(n: Int): String = n match {
+    case 1 => "1 bottle"
+    case 0 => "no more bottles"
+    case _ => s"$n bottles"
   }
 
 }
