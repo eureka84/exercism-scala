@@ -7,15 +7,15 @@ object BeerSong {
   private def verse(bottlesOnTheWall: Int) =
     firstVerse(bottlesOnTheWall) + secondVerse(bottlesOnTheWall, bottlesOnTheWall - 1)
 
-  private def firstVerse(n: Int) = s"${bottles(n).capitalize} of beer on the wall, ${bottles(n)} of beer.\n"
+  private def firstVerse(n: Int) = s"${onTheWall(n).capitalize}, ${bottles(n)} of beer.\n"
 
   private def secondVerse(current: Int, remaining: Int): String = current match {
-    case 0 => s"Go to the store and buy some more, ${onTheWall(99)}"
-    case 1 => s"Take it down and pass it around, ${onTheWall(remaining)}"
-    case _ => s"Take one down and pass it around, ${onTheWall(remaining)}"
+    case 0 => s"Go to the store and buy some more, ${onTheWall(99)}.\n"
+    case 1 => s"Take it down and pass it around, ${onTheWall(remaining)}.\n"
+    case _ => s"Take one down and pass it around, ${onTheWall(remaining)}.\n"
   }
 
-  private def onTheWall(n: Int): String = s"${bottles(n)} of beer on the wall.\n"
+  private def onTheWall(n: Int): String = s"${bottles(n)} of beer on the wall"
 
   def bottles(n: Int): String = n match {
     case 1 => "1 bottle"
